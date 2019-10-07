@@ -1,0 +1,5 @@
+RewriteEngine on 
+RewriteRule ^$ /carpeta/ [L,QSA] 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*)$ /carpeta/$1 [L,QSA])
