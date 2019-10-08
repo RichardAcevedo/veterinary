@@ -2,6 +2,48 @@
 	require_once '../../bd/Database.php';
 	class AdministratorDAO{
 
+
+		function deleteImageSlider($id){
+
+			$db = new Database();
+
+			$connection = $db->getConnection();
+			$stmt = $connection->prepare("DELETE FROM slider_image_landing WHERE id_image = ?");
+
+			$stmt->bind_param("s", $id);
+
+			try {
+			    $stmt->execute();
+			    return true;
+			} catch (Exception $e) {
+			    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+			    return false;
+			}
+
+
+		}
+
+		function saveImageSlider($name, $url){
+			$db = new Database();
+
+			$connection = $db->getConnection();
+			$stmt = $connection->prepare("INSERT INTO slider_image_landing (id_image, name, url) VALUES (NULL, ?, ?)");
+
+
+
+			$stmt->bind_param("ss", $name, $url);
+			try {
+			    $stmt->execute();
+			    return true;
+			} catch (Exception $e) {
+			    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+			    return false;
+			}
+
+
+
+		}
+
 		function addVeterinary($Person){
 			$db = new Database();
 
@@ -19,7 +61,7 @@
 			$mail = $Person->getMail();
 			$password = $Person->getPassword();
 			$picture = $Person->getPicture();
-			
+
 			$stmt->bind_param("sssssssssss", $id, $name, $lastName, $sex, $phone, $cardProfessional, $secretQuestion, $secretAnswer, $mail, $password, $picture);
 			try {
 			    $stmt->execute();
@@ -28,11 +70,11 @@
 			    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
 			    return false;
 			}
-			
 
-			
+
+
 		}
-		
+
 		function findToChangePassword($id, $secretQuestion, $secretAnswer){
 			$db = new Database();
 			$connection = $db->getConnection();
@@ -46,6 +88,8 @@
 				return false;
 			}
 		}
+
+
 
 		function changePassword($id, $password){
 			$db = new Database();
@@ -68,7 +112,7 @@
 				$result       = mysqli_query($connection, $sql);
 				return true;
 			}
-			
+
 		}
 
 		function sendReminder($idAppointment, $idClient, $dateAppointment, $hourAppointment){
@@ -83,8 +127,8 @@
 			$hourAppointment = $hourAppointment;
 
 			$description = "Se le recuerda llevar a su mascota a la cita medica el dia ".$dateAppointment." a las ".$hourAppointment."";
-			
-			
+
+
 			$stmt->bind_param("iss", $idAppointment, $idClient, $description);
 			try {
 			    $stmt->execute();
@@ -93,18 +137,18 @@
 			    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
 			    return false;
 			}
-			
 
-			
+
+
 		}
 
-		
 
 
 
-		
 
-		
+
+
+
 }
 
 ?>

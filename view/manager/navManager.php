@@ -27,7 +27,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      
+
        <li class="nav-item">
         <a class="nav-link" href="viewAppointmentToday.php">
           <i class="  fas fa-cat"></i>
@@ -55,7 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      
+
        <li class="nav-item">
         <a class="nav-link" href="addVeterinary.php">
           <i class="  fas fa-cat"></i>
@@ -81,7 +81,7 @@
           <span>Ver Pacientes</span></a>
       </li>
 
-     
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -91,9 +91,9 @@
         Herramientas
       </div>
 
-      
+
       <!-- Nav Item - Charts -->
-      
+
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -120,6 +120,45 @@
           <i class="fas fa-power-off"></i>
           <span>Cerrar Sesión</span></a>
       </li>
+
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Configurar LandingPage
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="viewSliderImage.php">
+          <i class="fas fa-child"></i>
+          <span>Ver Imagen Deslizante</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="viewChangePictureSlider.php">
+          <i class="fas fa-child"></i>
+          <span>Añadir Imagen Deslizante</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="viewProfile.php">
+          <i class="  fas fa-address-card"></i>
+          <span>Cambiar Quienes Somos</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="viewEditProfle.php">
+          <i class="fas fa-child"></i>
+          <span>Cambiar Servicios</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../../">
+          <i class="fas fa-child"></i>
+          <span>Cambiar Galeria</span></a>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

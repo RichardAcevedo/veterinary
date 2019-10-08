@@ -1,9 +1,15 @@
-<!DOCTYPE html>
+<?php
+
+require 'bd/Database.php';
+$db = new Database();
+$con = $db->getConnection();
+
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Central Pet || The best place for Your Pet</title>
-	
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/cssPaginaPrincipal/Estilo.css">
 	<link rel="icon" href="css/cssPaginaPrincipal/img/iconoPestania.png" />
@@ -21,19 +27,29 @@
 				<li><a href="view/login/"><h4 id="titulo" style="color: #929292;">Entrar</h4></a></li>
 			</ul>
 		</nav>
-	</header>			
+	</header>
 	<section>
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="css/cssPaginaPrincipal/img/img1.png" class="d-block w-100" alt="..." style="height: 645px;">
-				</div>
-				<div class="carousel-item">
-					<img src="css/cssPaginaPrincipal/img/img2.png" class="d-block w-100" alt="..." style="height: 645px;">
-				</div>
-				<div class="carousel-item">
-					<img src="css/cssPaginaPrincipal/img/img3.png" class="d-block w-100" alt="..." style="height: 645px;">
-				</div>
+				<?php
+						$sqlQuery = "SELECT * FROM slider_image_landing";
+						$resultSet = mysqli_query($con, $sqlQuery);
+						$setActive = 0;
+						$sliderHtml = '';
+						while( $sliderImage = mysqli_fetch_assoc($resultSet)){
+							$activeClass = "";
+							if(!$setActive) {
+								$setActive = 1;
+								$activeClass = 'active';
+							}
+							$sliderHtml.= "<div class='item ".$activeClass."'>";
+							$sliderHtml.= "<div class='col-xs-4'><a href='".$sliderImage['id_image']."'>";
+							$sliderHtml.= "<center><img align='center' alt='...'  style='height:450px; width:1200;' src='img/SliderImageLanding/".$sliderImage['url']."'><center>";
+							$sliderHtml.= "</a></div></div>";
+						}
+						echo $sliderHtml;
+				?>
+
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -130,7 +146,7 @@
 		</div>
 	</div>
 	<hr class="linea">
-	
+
 	<footer>
 		<div class="social">
 			<ul>
@@ -153,7 +169,7 @@
 					<p>Desparasitación</p>
 					<p>Hospitalización</p>
 					<p>Artículos</p>
-				</article>				
+				</article>
 			</section>
 			<section class="col-4">
 				<h6>ACCEDE</h6>
@@ -166,6 +182,9 @@
 		</div>
 		<blockquote>CentralPet©2019</blockquote>
 	</footer>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+	<script src="js/multiple-image-slider.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
